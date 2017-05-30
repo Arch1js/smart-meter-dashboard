@@ -1,0 +1,7 @@
+{
+  "short_name": "Smart-temp",
+  "name": "Arduino smart temperature meter dashboard",
+  "start_url": "index.html",
+  "theme_color": "#2196F3",
+  "background_color": "#2196F3"
+}
