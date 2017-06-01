@@ -18,6 +18,6 @@ What data is displayed -
 
 What can be controlled -
 * Speed of the DC motor
-* Temperature limits (still in development)
+* Temperature limits
 
 ![Dashboard](https://image.ibb.co/jQaTHa/smart_dashboard.png)

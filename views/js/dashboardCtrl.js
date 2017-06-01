@@ -51,6 +51,8 @@ angular.module('dashboardCtrl', [])
       $("#fahrenheit").html(m.F);
       $("#measureCount").html(measureCount);
       $("#warningCount").html(warnCount);
+      $("#currentUpper").html("Current: <b>" + m.U + "</b>");
+      $("#currentLower").html("Current: <b>" + m.L + "</b>");
     }
 
   //   $(function() {
@@ -72,6 +74,7 @@ angular.module('dashboardCtrl', [])
   //
   //   })
   // })
+
     function switchVentOn(state) {
       console.log(state);
       pubnub.publish({
@@ -79,6 +82,27 @@ angular.module('dashboardCtrl', [])
       message: state
     });
     }
+
+    $scope.updateLimits = function() {
+      var upper = $scope.upper;
+      var lower = $scope.lower;
+
+      var data = {up: upper, lo: lower};
+
+      pubnub.publish({
+      channel: "smart-temp3",
+      message: data
+    });
+
+    if(upper != undefined) {
+      $("#currentUpper").html("Current: <b>" + upper + "</b>");
+    }
+    else if (lower != undefined) {
+      $("#currentLower").html("Current: <b>" + lower + "</b>");
+    }
+
+    }
+
     $scope.sendValues = function() {
       var ventilatorSpeed = $scope.vent.speed;
 
